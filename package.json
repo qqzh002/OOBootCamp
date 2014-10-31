@@ -1,0 +1,21 @@
+{
+  "name": "OOBootCamp",
+  "version": "0.0.0",
+  "description": "OOBootCamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-mocha-test": "^0.12.1",
+    "mocha": "^1.21.5",
+    "mocha-testdata": "^1.1.0",
+    "should": "^4.1.0"
+  },
+  "dependencies": {
+    "underscore": "^1.7.0"
+  }
+}
