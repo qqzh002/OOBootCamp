@@ -1,23 +1,18 @@
 "use strict";
 
+var ParkingFellowBase = require("./parkingFellowBase");
+
 function ParkingFellow(parkingLots) {
-    this.parkingLots = parkingLots;
+    ParkingFellowBase.call(this, parkingLots);
 }
+
+ParkingFellow.prototype = new ParkingFellowBase();
 
 ParkingFellow.prototype.park = function (car) {
     for (var i = 0; i < this.parkingLots.length; i++) {
         var ticket = this.parkingLots[i].park(car);
         if (ticket !== undefined) {
             return ticket;
-        }
-    }
-};
-
-ParkingFellow.prototype.pick = function (ticket) {
-    for (var i = 0; i < this.parkingLots.length; i++) {
-        var car = this.parkingLots[i].pick(ticket);
-        if (car !== undefined) {
-            return car;
         }
     }
 };

@@ -1,10 +1,13 @@
 "use strict";
 
 var _ = require("underscore");
+var ParkingFellowBase = require("./parkingFellowBase");
 
 function SmartParkingFellow(parkingLots) {
-    this.parkingLots = parkingLots;
+    ParkingFellowBase.call(this, parkingLots);
 }
+
+SmartParkingFellow.prototype = new ParkingFellowBase();
 
 SmartParkingFellow.prototype.park = function (car) {
     var parkingLotWithMostEmptySpaces = _.chain(this.parkingLots)
@@ -14,15 +17,6 @@ SmartParkingFellow.prototype.park = function (car) {
         .last()
         .value();
     return parkingLotWithMostEmptySpaces.park(car);
-};
-
-SmartParkingFellow.prototype.pick = function (ticket) {
-    for (var i = 0; i < this.parkingLots.length; i++) {
-        var car = this.parkingLots[i].pick(ticket);
-        if (car !== undefined) {
-            return car;
-        }
-    }
 };
 
 module.exports = SmartParkingFellow;
