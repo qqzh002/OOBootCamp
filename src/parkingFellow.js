@@ -1,7 +1,5 @@
 "use strict";
 
-var _ = require("underscore");
-
 function ParkingFellow(parkingLots) {
     this.parkingLots = parkingLots;
 }

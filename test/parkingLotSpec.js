@@ -1,6 +1,7 @@
 "use strict";
 
 require("should");
+var _ = require("underscore");
 var ParkingLot = require("../src/parkingLot");
 
 describe("Parking Lot", function () {
@@ -34,20 +35,20 @@ describe("Parking Lot", function () {
     it("should not be able to pick car when the car is already picked", function () {
         var ticket = parkingLot.park("car");
         parkingLot.pick(ticket);
-        (parkingLot.pick(ticket) === undefined).should.be.true;
+        _.isUndefined(parkingLot.pick(ticket)).should.be.true;
     });
 
     it("should not be able to park car when parkingLot has no space", function () {
         parkingLot = new ParkingLot(0);
         var ticket = parkingLot.park("car");
-        (parkingLot.pick(ticket) === undefined).should.be.true;
+        _.isUndefined(parkingLot.pick(ticket)).should.be.true;
     });
 
     it("should not be able to park car when parkingLot is full", function () {
         parkingLot = new ParkingLot(1);
         parkingLot.park("car1");
         var ticket = parkingLot.park("car2");
-        (parkingLot.pick(ticket) === undefined).should.be.true;
+        _.isUndefined(parkingLot.pick(ticket)).should.be.true;
     });
 
 });
