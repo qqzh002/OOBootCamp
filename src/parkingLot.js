@@ -22,4 +22,8 @@ ParkingLot.prototype.pick = function (ticket) {
     return car;
 };
 
+ParkingLot.prototype.countEmptySpaces = function () {
+    return this.capacity - _.size(this.cars);
+};
+
 module.exports = ParkingLot;
