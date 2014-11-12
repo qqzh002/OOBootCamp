@@ -1,5 +1,7 @@
 "use strict";
 
+var _ = require("underscore");
+
 function ParkingFellowBase(parkingLots) {
     this.parkingLots = parkingLots;
 }
@@ -11,6 +13,13 @@ ParkingFellowBase.prototype.pick = function (ticket) {
             return car;
         }
     }
+};
+
+ParkingFellowBase.prototype.chooseParkingLotBy = function (iteratee) {
+    return _.chain(this.parkingLots)
+        .sortBy(iteratee)
+        .last()
+        .value();
 };
 
 module.exports = ParkingFellowBase;

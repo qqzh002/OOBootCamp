@@ -27,7 +27,7 @@ ParkingLot.prototype.countEmptySpaces = function () {
 };
 
 ParkingLot.prototype.calculateVacancyRate = function () {
-    return (this.capacity - _.size(this.cars)) / this.capacity;
+    return this.countEmptySpaces() / this.capacity;
 };
 
 module.exports = ParkingLot;

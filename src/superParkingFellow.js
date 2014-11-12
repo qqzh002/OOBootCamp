@@ -1,6 +1,5 @@
 "use strict";
 
-var _ = require("underscore");
 var ParkingFellowBase = require("./parkingFellowBase");
 
 function SmartParkingFellow(parkingLots) {
@@ -10,13 +9,9 @@ function SmartParkingFellow(parkingLots) {
 SmartParkingFellow.prototype = new ParkingFellowBase();
 
 SmartParkingFellow.prototype.park = function (car) {
-    var parkingLotWithHighestVacancyRate = _.chain(this.parkingLots)
-        .sortBy(function (parkingLot) {
-            return parkingLot.calculateVacancyRate();
-        })
-        .last()
-        .value();
-    return parkingLotWithHighestVacancyRate.park(car);
+    return this.chooseParkingLotBy(function (parkingLot) {
+        return parkingLot.calculateVacancyRate();
+    }).park(car);
 };
 
 module.exports = SmartParkingFellow;
