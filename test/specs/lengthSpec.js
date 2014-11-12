@@ -2,7 +2,7 @@
 
 require("should");
 var given  = require("mocha-testdata");
-var Length = require("../src/length.js");
+var Length = require("../../src/length.js");
 
 describe.skip("Length", function () {
 

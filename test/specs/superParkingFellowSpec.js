@@ -1,8 +1,9 @@
 "use strict";
 
 require("should");
-var ParkingLot = require("../src/parkingLot");
-var SuperParkingFellow = require("../src/SuperParkingFellow");
+var ParkingLot = require("../../src/parkingLot");
+var ParkingLotBuilder = require("../builders/parkingLotBuilder");
+var SuperParkingFellow = require("../../src/SuperParkingFellow");
 
 describe("Super Parking Fellow", function () {
 
@@ -45,8 +46,10 @@ describe("Super Parking Fellow", function () {
         });
 
         it("should park car to the parking lot with higher vacancy rate", function () {
-            var parkingLotWithLowerVacancyRate = new ParkingLot(100);
-            parkingLotWithLowerVacancyRate.park("car1");
+            var parkingLotWithLowerVacancyRate = new ParkingLotBuilder()
+                .withCapacity(100)
+                .withNumberOfCars(1)
+                .build();
             var parkingLotWithHigherVacancyRate = new ParkingLot(100);
             var parkingFellow = new SuperParkingFellow([parkingLotWithLowerVacancyRate, parkingLotWithHigherVacancyRate]);
 
@@ -56,8 +59,10 @@ describe("Super Parking Fellow", function () {
         });
 
         it("should park car to the parking lot with higher vacancy rate even if it has less empty spaces", function () {
-            var parkingLotWithLowerVacancyRate = new ParkingLot(100);
-            parkingLotWithLowerVacancyRate.park("car1");
+            var parkingLotWithLowerVacancyRate = new ParkingLotBuilder()
+                .withCapacity(100)
+                .withNumberOfCars(1)
+                .build();
             var parkingLotWithHigherVacancyRate = new ParkingLot(10);
             var parkingFellow = new SuperParkingFellow([parkingLotWithLowerVacancyRate, parkingLotWithHigherVacancyRate]);
 

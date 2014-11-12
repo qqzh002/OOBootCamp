@@ -2,7 +2,7 @@
 
 require("should");
 var _ = require("underscore");
-var ParkingLot = require("../src/parkingLot");
+var ParkingLot = require("../../src/parkingLot");
 
 describe("Parking Lot", function () {
     var parkingLot;

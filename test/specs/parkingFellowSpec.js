@@ -1,8 +1,8 @@
 "use strict";
 
 require("should");
-var ParkingLot = require("../src/parkingLot");
-var ParkingFellow = require("../src/parkingFellow");
+var ParkingLot = require("../../src/parkingLot");
+var ParkingFellow = require("../../src/parkingFellow");
 
 describe("Parking Fellow", function () {
 
