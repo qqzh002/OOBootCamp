@@ -2,16 +2,16 @@
 
 var ParkingFellowBase = require("./parkingFellowBase");
 
-function SmartParkingFellow(parkingLots) {
+function SuperParkingFellow(parkingLots) {
     ParkingFellowBase.call(this, parkingLots);
 }
 
-SmartParkingFellow.prototype = new ParkingFellowBase();
+SuperParkingFellow.prototype = new ParkingFellowBase();
 
-SmartParkingFellow.prototype.park = function (car) {
+SuperParkingFellow.prototype.park = function (car) {
     return this.chooseParkingLotBy(function (parkingLot) {
         return parkingLot.calculateVacancyRate();
     }).park(car);
 };
 
-module.exports = SmartParkingFellow;
+module.exports = SuperParkingFellow;
