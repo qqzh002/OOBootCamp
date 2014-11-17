@@ -3,7 +3,7 @@
 var _ = require("underscore");
 
 function ParkingLot(capacity) {
-    this.capacity = capacity;
+    this.capacity = capacity === undefined ? 100 : capacity;
     this.cars = {};
 }
 

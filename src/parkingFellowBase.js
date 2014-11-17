@@ -15,11 +15,4 @@ ParkingFellowBase.prototype.pick = function (ticket) {
     }
 };
 
-ParkingFellowBase.prototype.chooseParkingLotBy = function (iteratee) {
-    return _.chain(this.parkingLots)
-        .sortBy(iteratee)
-        .last()
-        .value();
-};
-
 module.exports = ParkingFellowBase;

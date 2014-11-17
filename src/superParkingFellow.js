@@ -1,5 +1,6 @@
 "use strict";
 
+var _ = require("underscore");
 var ParkingFellowBase = require("./parkingFellowBase");
 
 function SuperParkingFellow(parkingLots) {
@@ -9,7 +10,7 @@ function SuperParkingFellow(parkingLots) {
 SuperParkingFellow.prototype = new ParkingFellowBase();
 
 SuperParkingFellow.prototype.park = function (car) {
-    return this.chooseParkingLotBy(function (parkingLot) {
+    return _.max(this.parkingLots, function (parkingLot) {
         return parkingLot.calculateVacancyRate();
     }).park(car);
 };
