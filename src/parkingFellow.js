@@ -1,6 +1,7 @@
 "use strict";
 
 var ParkingFellowBase = require("./parkingFellowBase");
+var utils = require("./utils");
 
 function ParkingFellow(parkingLots) {
     ParkingFellowBase.call(this, parkingLots);
@@ -9,12 +10,9 @@ function ParkingFellow(parkingLots) {
 ParkingFellow.prototype = new ParkingFellowBase();
 
 ParkingFellow.prototype.park = function (car) {
-    for (var i = 0; i < this.parkingLots.length; i++) {
-        var ticket = this.parkingLots[i].park(car);
-        if (ticket !== undefined) {
-            return ticket;
-        }
-    }
+    return utils.iterateUntilNotUndefined(this.parkingLots, function (parkingLot) {
+        return parkingLot.park(car);
+    });
 };
 
 module.exports = ParkingFellow;

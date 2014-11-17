@@ -1,18 +1,16 @@
 "use strict";
 
 var _ = require("underscore");
+var utils = require("./utils");
 
 function ParkingFellowBase(parkingLots) {
     this.parkingLots = parkingLots;
 }
 
 ParkingFellowBase.prototype.pick = function (ticket) {
-    for (var i = 0; i < this.parkingLots.length; i++) {
-        var car = this.parkingLots[i].pick(ticket);
-        if (car !== undefined) {
-            return car;
-        }
-    }
+    return utils.iterateUntilNotUndefined(this.parkingLots, function (parkingLot) {
+        return parkingLot.pick(ticket);
+    });
 };
 
 module.exports = ParkingFellowBase;

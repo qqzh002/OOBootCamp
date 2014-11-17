@@ -1,6 +1,7 @@
 "use strict";
 
 var ParkingLot = require("./parkingLot");
+var utils = require("./utils");
 
 function ParkingManager(parkingLots, parkingFellows) {
     this.parkingLots = parkingLots;
@@ -8,21 +9,15 @@ function ParkingManager(parkingLots, parkingFellows) {
 }
 
 ParkingManager.prototype.park = function (car) {
-    for (var i = 0; i < this.getParkableList().length; i++) {
-        var ticket = this.getParkableList()[i].park(car);
-        if (ticket !== undefined) {
-            return ticket;
-        }
-    }
+    return utils.iterateUntilNotUndefined(this.getParkableList(), function (parkableList) {
+        return parkableList.park(car);
+    });
 };
 
 ParkingManager.prototype.pick = function (ticket) {
-    for (var i = 0; i < this.getParkableList().length; i++) {
-        var car = this.getParkableList()[i].pick(ticket);
-        if (car !== undefined) {
-            return car;
-        }
-    }
+    return utils.iterateUntilNotUndefined(this.getParkableList(), function (parkableList) {
+        return parkableList.pick(ticket);
+    });
 };
 
 ParkingManager.prototype.getParkableList = function () {
