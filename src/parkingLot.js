@@ -22,12 +22,20 @@ ParkingLot.prototype.pick = function (ticket) {
     return car;
 };
 
+ParkingLot.prototype.getCapacity = function () {
+    return this.capacity;
+};
+
 ParkingLot.prototype.countEmptySpaces = function () {
     return this.capacity - _.size(this.cars);
 };
 
 ParkingLot.prototype.calculateVacancyRate = function () {
     return this.countEmptySpaces() / this.capacity;
+};
+
+ParkingLot.prototype.generateReport = function (prefix) {
+    return prefix + "P " + this.countEmptySpaces() + " " + this.getCapacity() + "\r\n";
 };
 
 module.exports = ParkingLot;
