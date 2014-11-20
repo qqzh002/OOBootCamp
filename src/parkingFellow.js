@@ -1,16 +1,16 @@
 "use strict";
 
-var ParkingFellowBase = require("./parkingFellowBase");
+var ParkableBase = require("./parkableBase");
 var utils = require("./utils");
 
 function ParkingFellow(parkingLots) {
-    ParkingFellowBase.call(this, parkingLots);
+    ParkableBase.call(this, parkingLots);
 }
 
-ParkingFellow.prototype = new ParkingFellowBase();
+ParkingFellow.prototype = new ParkableBase();
 
 ParkingFellow.prototype.park = function (car) {
-    return utils.iterateUntilNotUndefined(this.parkingLots, function (parkingLot) {
+    return utils.iterateUntilNotUndefined(this.parkableList, function (parkingLot) {
         return parkingLot.park(car);
     });
 };
